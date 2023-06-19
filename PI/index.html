@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <title>Virality</title>
+  <link rel="icon" type="image/x-icon" href="./imagenes/monedaNormal.png">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+  <!-- Scripts del juego -->
+  <script type="text/javascript" src="juego.js"></script>
+
+  <!-- AniJs -->
+  <link rel="stylesheet" href="http://anijs.github.io/lib/anicollection/anicollection.css">
+
+</head>
+
+<body>
+  
+  <header>
+    <!-- place navbar here -->
+  </header>
+  <main>
+    <div id="div0" class="row text-center" style="background-color: orange;">
+      <div class="col-6 moneda">
+        <p class="letrasPuntos" data-anijs="if: mouseover, do: pulse animated" id="contadorPuntos">0</p>
+        <img class="iconoMoneda" src="./imagenes/monedaNormal.png"/>
+
+        <!-- HOVER MONEDA -->
+        <div class="explicacionMoneda card">
+          <div class="row no-gutters">
+            <div class="col-sm-12">
+              <div class="card-body" style="text-align: left;">
+                <p>Las Viralcoins<img class="iconoMoneda" src="./imagenes/monedaNormal.png"/> son las monedas de cambio del juego.</p>
+                <p>Consiguelas haciendo click en el móvil o usando habilidades.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    
+
+      <div class="col-6 moneda">
+        <p class="letrasPuntos" data-anijs="if: mouseover, do: pulse animated" id="contadorPuntosEspeciales">0</p>
+        <img class="iconoMoneda" src="./imagenes/monedaEspecial.png"/>
+
+        <div class="explicacionMoneda card">
+          <div class="row no-gutters">
+            <div class="col-sm-12">
+              <div class="card-body" style="text-align: left;">
+                <p>Las Viralcoins Especiales<img class="iconoMoneda" src="./imagenes/monedaEspecial.png"/> sirven para mejorar el rendimiento de las habilidades.</p>
+                <p>Consigue más obteniendo más Viralcoins<img class="iconoMoneda" src="./imagenes/monedaNormal.png"/> o aumentando el nivel de las habilidades.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- HOVER MEJORAS -->
+
+    
+    </div>
+
+    <div class="row text-center justify-content-center">
+      <div id="div1" class="col-12 col-md-4 col-lg-4 p-4" style="background-color: blue;">
+        <img class="botonDeClick" src="./imagenes/tecnoCirculo.png" data-anijs="if: click, on: .botonDeClick, do: rotate animated"/>
+        <div data-anijs="if: click, on: .botonDeClick, do: rubberBand animated, to: target">
+          <img class="botonDeClick" src="./imagenes/movil.png" data-anijs="if: mouseover, do: tada animated" onclick="clickadas(1)"/>
+          <!-- <button type="button" class="btn btn-primary" id="botonClick" data-anijs="if: mouseover, do: tada animated" onclick="clickadas(1)">Pulsame</button> -->
+        </div>
+      </div>
+      
+      <div id="div2" class="col-12 col-md-4 col-lg-4">
+        <canvas id="background"></canvas>
+      </div>
+
+      <div id="div3" class="col-12 col-md-4 col-lg-4 p-4" style="background-color: blue;">
+        <!-- MEJORAS -->
+        <div class="row" style="padding-bottom: 2rem;">
+          <!-- MEJORA DE TIEMPO - BOTS -->
+          <div id="mejoraTiempoBots" class="col-4 mejora">
+            <img class="img-especial" src="./imagenes/mejorarTelefono.png" data-anijs="if: click, do: bounce animated" onclick="mejorarTiempo_1s()"/>
+            
+            <!-- HOVER MEJORAS -->
+            <div class="mejoraHover card">
+              <div class="row no-gutters">
+                <div class="col-sm-12">
+                  <div class="card-body" style="text-align: left;">
+                    <h5>Mejorar Teléfono</h5>
+                    <p id="nivelTiempo1"></p>
+                    <p>Comprate otro movil. No lo necesitas ¡pero este tiene 4 cámaras más! Cada nivel mejora el tiempo de la habilidad de Bots un 10%.</p>
+                    <p>Coste de mejora: 200 <img class="iconoMoneda" src="./imagenes/monedaEspecial.png"/></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- MEJORA DE TIEMPO - EDITOR -->
+          <div id="mejoraTiempoEditor" class="col-4 mejora">
+            <img class="img-especial" src="./imagenes/mejorarOrdenador.png" data-anijs="if: click, do: bounce animated" onclick="mejorarTiempo_5s()"/>
+
+            <!-- HOVER MEJORAS -->
+            <div class="mejoraHover card">
+              <div class="row no-gutters">
+                <div class="col-sm-12">
+                  <div class="card-body" style="text-align: left;">
+                    <h5>Mejorar Ordenador</h5>
+                    <p id="nivelTiempo5"></p>
+                    <p>Mejora tu ordenador con más luces de colorines. Cada nivel mejora el tiempo de la habilidad del Editor un 5%.</p>
+                    <p>Coste de mejora: 400 <img class="iconoMoneda" src="./imagenes/monedaEspecial.png"/></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- MEJORA DE TIEMPO - PATROCINADOR -->
+          <div id="mejoraTiempoPatrocinador" class="col-4 mejora">
+            <img class="img-especial" src="./imagenes/mejorarServidores.png" data-anijs="if: click, do: bounce animated" onclick="mejorarTiempo_10s()"/>
+
+            <!-- HOVER MEJORAS -->
+            <div class="mejoraHover card">
+              <div class="row no-gutters">
+                <div class="col-sm-12">
+                  <div class="card-body" style="text-align: left;">
+                    <h5>Alquilar Servidores</h5>
+                    <p id="nivelTiempo10"></p>
+                    <p>Consigue servidores para tener más bots, tener más números e impresionar a tus patrocinadores. Cada nivel mejora el tiempo de la habilidad del Patrocinador un 5%.</p>
+                    <p>Coste de mejora: 600 <img class="iconoMoneda" src="./imagenes/monedaEspecial.png"/></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
+
+        <!-- HABILIDADES -->
+        <div class="row mejora">
+          <div class="row habilidad mejora" data-anijs="if: mouseover, do: pulse animated, to: $children">
+            <div class="card" data-anijs="if: click, do: flip animated" onclick="mejorarMultiplicador()">
+              <div class="row no-gutters">
+                <div class="col-sm-3">
+                    <img class="card-img" src="./imagenes/click3D.png">
+                </div>
+                <div class="col-sm-9">
+                  <div class="card-body" style="text-align: left;">
+                    <h4>Click</h4>
+                    <p id="nivelMultiplicador">Multiplicador Nivel 1</p>
+                    <p style="display: inline-block;" id="precioMultiplicador">Precio de mejora: 10</p>
+                    <img class="iconoMoneda" src="./imagenes/monedaNormal.png"/>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- HOVER MEJORAS -->
+          <div class="mejoraHover card">
+            <div class="row no-gutters">
+              <div class="col-sm-12">
+                <div class="card-body" style="text-align: left;">
+                  <p class="textoComentario">"No es mucho, pero es un trabajo honesto."</p>
+                  <div class="linea"></div>
+                  <p>¡Que el tunel carpiano te salga rentable!</p>
+                  <p>Duplica el número de <img class="iconoMoneda" src="./imagenes/monedaNormal.png"/> por click</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mejora">
+          <div id="habilidadBots" class="row habilidad" data-anijs="if: mouseover, do: pulse animated, to: $children">
+            <div class="card" data-anijs="if: click, do: flip animated" onclick="mejorarBots()">
+              <div class="row no-gutters">
+                <div class="col-3">
+                    <img class="card-img" src="./imagenes/bots.png">
+                </div>
+                <div class="col-9">
+                  <div class="card-body" style="text-align: left;">
+                    <h4>Bots</h4>
+                    <p id="nivelBots"></p>
+                    <p id="precioBots" style="display: inline-block;">Precio de compra: 1000</p>
+                    <img class="iconoMoneda" src="./imagenes/monedaNormal.png"/>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- HOVER MEJORAS -->
+          <div class="mejoraHover card">
+            <div class="row no-gutters">
+              <div class="col-sm-12">
+                <div class="card-body" style="text-align: left;">
+                  <p class="textoComentario">"BEEP-BOOP"</p>
+                  <div class="linea"></div>
+                  <p>¿Por qué trabajar para conseguir y mantener seguidores cuando puedes pagar por unos que serán siempre leales?</p>
+                  <p>Consigue algunos <img class="iconoMoneda" src="./imagenes/monedaNormal.png"/> automáticamente cada segundo.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row mejora">
+          <div id="habilidadEditor" class="row habilidad" data-anijs="if: mouseover, do: pulse animated, to: $children">
+            <div class="card" data-anijs="if: click, do: flip animated" onclick="mejorarEditor()">
+              <div class="row no-gutters">
+                <div class="col-sm-3">
+                    <img class="card-img" src="./imagenes/editor.png">
+                </div>
+                <div class="col-sm-9">
+                  <div class="card-body" style="text-align: left;">
+                    <h4>Editor</h4>
+                    <p id="nivelEditor"></p>
+                    <p id="precioEditor" style="display: inline-block;">Precio de compra: 20000</p>
+                    <img class="iconoMoneda" src="./imagenes/monedaNormal.png"/>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- HOVER MEJORAS -->
+          <div class="mejoraHover card">
+            <div class="row no-gutters">
+              <div class="col-sm-12">
+                <div class="card-body" style="text-align: left;">
+                  <p class="textoComentario">"Yo no esclavizo a mi editor, trabaja muy a gusto. -Cualquier youtuber promedio"</p>
+                  <div class="linea"></div>
+                  <p>Si quieres algo bien hecho, no lo hagas tu mismo, contrata a un profesional.</p>
+                  <p>Consigue muchos <img class="iconoMoneda" src="./imagenes/monedaNormal.png"/> automáticamente cada 5 segundos.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mejora">
+          <div id="habilidadPatrocinador" class="row habilidad" data-anijs="if: mouseover, do: pulse animated, to: $children">
+            <div class="card" data-anijs="if: click, do: flip animated" onclick="mejorarPatrocinador()">
+              <div class="row no-gutters">
+                <div class="col-sm-3">
+                    <img class="card-img" src="./imagenes/patrocinador.png">
+                </div>
+                <div class="col-sm-9">
+                  <div class="card-body" style="text-align: left;">
+                    <h4>Patrocinador</h4>
+                    <p id="nivelPatrocinador"></p>
+                    <p id="precioPatrocinador" style="display: inline-block;">Precio de compra: 100000</p>
+                    <img class="iconoMoneda" src="./imagenes/monedaNormal.png"/>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- HOVER MEJORAS -->
+          <div class="mejoraHover card">
+            <div class="row no-gutters">
+              <div class="col-sm-12">
+                <div class="card-body" style="text-align: left;">
+                  <p class="textoComentario">"Capitalismo, ahorro y trabajo duru. No hay otra cosa."</p>
+                  <div class="linea"></div>
+                  <p>Vendete a una empresa y gana dinero a costa de tus principios morales.</p>
+                  <p>Consigue muchísimos <img class="iconoMoneda" src="./imagenes/monedaNormal.png"/> automáticamente cada 10 segundos.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <footer>
+    <div class="container">
+      <div class="row text-center">
+          <div class="col-12 footer-col">
+              <h4>@José Ángel García Pérez</h3>
+              <p>2ºDAW - Curso 2022-2023</p>
+          </div>
+      </div>
+  </div>
+  </footer>
+  <!-- Bootstrap JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+    </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+    </script>
+
+  <!-- Librerias AniJS -->
+  <script src="./bower_components/AniJS/dist/anijs-min.js"></script>
+  <script src="./bower_components/AniJS/dist/helpers/dom/anijs-helper-dom-min.js"></script>
+
+  <!-- THREE.JS -->
+  <script type="module" src="three.js"></script>
+</body>
+
+</html>

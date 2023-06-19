@@ -1,0 +1,327 @@
+canvas
+{
+    position: relative;
+    top: auto;
+    right: 12px;
+    /* top: 50px;
+    left: 33vw; */
+}
+
+main
+{
+    width: 100vw;
+    position: absolute;
+}
+
+.iconoMoneda
+{
+    width: 20px;
+    height: 20px;
+    margin-bottom: 4px;
+}
+
+.letrasPuntos
+{
+    padding-top: 5px;
+    color: rgb(255, 255, 0);
+    text-shadow: 0px 0px 15px rgb(255, 245, 151);
+    font-weight: bold;
+    display: inline-block;
+}
+
+.letrasPuntos:hover
+{
+	animation: brillo 1000ms ease-out infinite;
+	animation-direction: alternate;
+	cursor:pointer;
+}
+
+.habilidad
+{
+    padding-bottom: 1rem;
+}
+
+.card-img {
+    margin-top: 1rem;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+    width: 100%;
+}
+
+.card-body
+{
+    
+}
+
+/*Animaciones*/
+@keyframes brillo
+{
+	100%
+	{
+		text-shadow: 0px 0px 0px rgb(255, 253, 122);
+
+	}
+	0%
+	{
+        text-shadow: 0px 0px 10px rgb(255, 253, 122);
+		
+	}
+}
+
+#div0
+{
+    height: 50px;
+    background-image: url(./imagenes/barraSuperior.jpg);
+    background-size: auto;
+}
+
+#div1
+{
+    height: 50rem;
+    background-image: url(./imagenes/cuadro1.jpg);
+    background-size: cover;
+    background-position: 50%;
+}
+
+#div2
+{
+    height: 50rem;
+}
+
+#div3
+{
+    height: 50rem;
+    background-image: url(./imagenes/cuadro2.jpg);
+    background-size: cover;
+    background-position: 50%;
+}
+
+#botonClick
+{
+    margin-top: 65%;
+    padding: 25px;
+}
+
+.botonDeClick
+{
+    width: 300px;
+    position: absolute;
+    top: 250px;
+    left: 100px;
+
+}
+
+.img-especial
+{
+    height: 5rem;
+    width: 5rem;
+}
+
+.card
+{
+    border: 2px solid;
+    border-color: rgb(0, 4, 255);
+    background-color: rgba(0, 0, 0, 0.718);
+    color: white;
+}
+
+
+/* POPUP HOVER */
+.mejora 
+{
+    position: relative;
+    /* display: inline-block; */
+}
+  
+.mejora .mejoraHover 
+{
+    visibility: hidden;
+    opacity: 0;
+    width: 300px;
+    background-color: black;
+    color: #fff;
+    font-size: small;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    right: 110%;
+    transition-duration: 0.5s;
+}
+
+.mejora:hover .mejoraHover 
+{
+    visibility: visible;
+    opacity: 1;
+    transition-duration: 1s;
+}
+
+/* POPUP HOVER */
+.moneda 
+{
+    position: relative;
+    /* display: inline-block; */
+}
+  
+.moneda .explicacionMoneda 
+{
+    visibility: hidden;
+    opacity: 0;
+    width: 300px;
+    background-color: black;
+    color: #fff;
+    font-size: small;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 50%;
+    margin-left: -60px; 
+    transition-duration: 0.5s;
+}
+
+.moneda:hover .explicacionMoneda 
+{
+    visibility: visible;
+    opacity: 1;
+    transition-duration: 1s;
+}
+
+.textoComentario
+{
+    color: #919191;
+    font-style: italic;
+}
+
+.linea 
+{
+    background: linear-gradient(to right,rgba(255,255,255,0),rgba(112, 205, 255, 0.725),rgba(255,255,255,0));
+    height: 2px;
+    width: 90%;
+    margin: 3px auto;
+    position: relative;
+}
+
+
+/* Smaller than small */
+@media(min-width: 0px) {
+    #botonClick
+    {
+        margin-top: 65%;
+        padding: 25px;
+    }
+    
+    .botonDeClick
+    {
+        width: 300px;
+        position: absolute;
+        top: 250px;
+        left: 100px;
+    
+    }
+
+}
+  
+/* // Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+    #botonClick
+    {
+        margin-top: 65%;
+        padding: 25px;
+    }
+    
+    .botonDeClick
+    {
+        width: 300px;
+        position: absolute;
+        top: 250px;
+        left: 23%;
+    
+    }
+
+}
+  
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    #botonClick
+    {
+        margin-top: 65%;
+        padding: 25px;
+    }
+    
+    .botonDeClick
+    {
+        width: 200px;
+        position: absolute;
+        top: 275px;
+        left: 8%;
+    
+    }
+
+}
+  
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    #botonClick
+    {
+        margin-top: 65%;
+        padding: 20px;
+    }
+    
+    .botonDeClick
+    {
+        width: 200px;
+        position: absolute;
+        top: 325px;
+        left: 8%;
+    
+    }
+
+}
+  
+/* // X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    #botonClick
+    {
+        margin-top: 65%;
+        padding: 33%;
+    }
+    
+    .botonDeClick
+    {
+        width: 250px;
+        position: absolute;
+        top: 250px;
+        left: 100px;
+    
+    }
+
+}
+  
+/* // XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {
+    #botonClick
+    {
+        margin-top: 65%;
+        padding: 25px;
+    }
+    
+    .botonDeClick
+    {
+        width: 300px;
+        position: absolute;
+        top: 250px;
+        left: 100px;
+    
+    }
+
+}
